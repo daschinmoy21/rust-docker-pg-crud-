@@ -1,0 +1,9 @@
+/run/media/crimxnhaze/D/rust/rust-docker-pg-crud-/target/debug/deps/postgres_types-a0b067848b3f021f.d: /home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/lib.rs /home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/pg_lsn.rs /home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/private.rs /home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/special.rs /home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/type_gen.rs
+
+/run/media/crimxnhaze/D/rust/rust-docker-pg-crud-/target/debug/deps/libpostgres_types-a0b067848b3f021f.rmeta: /home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/lib.rs /home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/pg_lsn.rs /home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/private.rs /home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/special.rs /home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/type_gen.rs
+
+/home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/lib.rs:
+/home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/pg_lsn.rs:
+/home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/private.rs:
+/home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/special.rs:
+/home/crimxnhaze/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/postgres-types-0.2.11/src/type_gen.rs:
