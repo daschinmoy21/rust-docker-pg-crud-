@@ -15,7 +15,9 @@ struct User {
 }
 
 // DB URL
-const DB_URL: &str = env!("DATABASE_URL");
+fn get_db_url() -> String {
+    env::var("DATABASE_URL").expect("DATABASE_URL must be set")
+}
 
 // Constants
 const OK_RESPONSE: &str = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n";
@@ -84,7 +86,7 @@ fn handle_client(mut stream: TcpStream) {
 // Handle POST request
 // Returns a `(String, String)` tuple for HTTP status and body, as explained above.
 fn handle_post_request(request: &str) -> (String, String) {
-    match (get_user_from_request_body(request), Client::connect(DB_URL, NoTls)) {
+    match (get_user_from_request_body(request), Client::connect(&get_db_url(), NoTls)) {
         (Ok(user), Ok(mut client)) => {
             client
                 .execute(
@@ -108,7 +110,7 @@ fn handle_get_request(request: &str) -> (String, String) {
         Err(_) => return (INTERNAL_SERVER_ERROR.to_string(), "Invalid ID".to_string()),
     };
 
-    match Client::connect(DB_URL, NoTls) {
+    match Client::connect(&get_db_url(), NoTls) {
         Ok(mut client) => {
             match client.query_one("SELECT id, name, email FROM users WHERE id = $1", &[&id]) {
                 Ok(row) => {
@@ -129,7 +131,7 @@ fn handle_get_request(request: &str) -> (String, String) {
 // Handle GET All request
 // Returns a `(String, String)` tuple for HTTP status and body, as explained above.
 fn handle_get_all_request(_request: &str) -> (String, String) {
-    match Client::connect(DB_URL, NoTls) {
+    match Client::connect(&get_db_url(), NoTls) {
         Ok(mut client) => {
             let mut users = Vec::new();
             for row in client.query("SELECT id, name, email FROM users", &[]).unwrap() {
@@ -154,7 +156,7 @@ fn handle_delete_request(request: &str) -> (String, String) {
         Err(_) => return (INTERNAL_SERVER_ERROR.to_string(), "Invalid ID".to_string()),
     };
 
-    match Client::connect(DB_URL, NoTls) {
+    match Client::connect(&get_db_url(), NoTls) {
         Ok(mut client) => {
             let rows_affected = client.execute("DELETE FROM users WHERE id = $1", &[&id]).unwrap();
             
@@ -174,7 +176,7 @@ fn handle_delete_request(request: &str) -> (String, String) {
 // - `Err(PostgresError)` if there's an error connecting to the database or executing the SQL.
 fn set_database() -> Result<(), PostgresError> {
     // Connect to db
-    let mut client = Client::connect(DB_URL, NoTls)?;
+    let mut client = Client::connect(&get_db_url(), NoTls)?;
     client.execute(
         "CREATE TABLE IF NOT EXISTS users (
             id SERIAL PRIMARY KEY,
